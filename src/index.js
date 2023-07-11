@@ -74,10 +74,34 @@ const Header = () => {
 const Menu = () => (
   <main className="menu">
     <h2>Our Menu</h2>
-    <Pizza />
+    <div>
+      {pizzaData.map((pizza) => {
+        return (
+          <Pizza
+            photoName={pizza.photoName}
+            name={pizza.name}
+            price={pizza.price}
+            ingredients={pizza.ingredients}
+          />
+        );
+      })}
+    </div>
   </main>
 );
 
+const Pizza = (props) => {
+  console.log(props);
+  return (
+    <div className="pizza">
+      <img src={props.photoName} alt="Pizza spinchi" />
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.ingredients}</p>
+        <span>{props.price}</span>
+      </div>
+    </div>
+  );
+};
 const Footer = () => {
   const hour = new Date().getHours();
   const openHour = 8;
@@ -97,16 +121,6 @@ const Footer = () => {
   );
 };
 // React.createElement('footer', null, 'We are currently open');
-
-const Pizza = () => {
-  return (
-    <div>
-      <img src="pizzas/spinaci.jpg" alt="Pizza spinchi" />
-      <h3>Pizza Spinaci</h3>
-      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
-    </div>
-  );
-};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
