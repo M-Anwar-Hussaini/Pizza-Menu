@@ -77,11 +77,19 @@ const Menu = () => {
     <main className="menu">
       <h2>Our Menu</h2>
       {len > 0 ? (
-        <ul className="pizzas">
-          {pizzaData.map((pizza) => {
-            return <Pizza pizzaObj={pizza} />;
-          })}
-        </ul>
+        <>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Praesentium, excepturi error. Impedit dolore esse eligendi
+            perspiciatis a pariatur debitis, deleniti quas, odio maxime earum
+            labore tenetur sed sit, placeat animi.
+          </p>
+          <ul className="pizzas">
+            {pizzaData.map((pizza) => {
+              return <Pizza pizzaObj={pizza} />;
+            })}
+          </ul>
+        </>
       ) : (
         <p>We are still working on our menu. Please come back later :)</p>
       )}
