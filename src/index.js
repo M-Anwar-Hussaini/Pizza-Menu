@@ -79,14 +79,7 @@ const Menu = () => {
       {len > 0 ? (
         <ul className="pizzas">
           {pizzaData.map((pizza) => {
-            return (
-              <Pizza
-                photoName={pizza.photoName}
-                name={pizza.name}
-                price={pizza.price}
-                ingredients={pizza.ingredients}
-              />
-            );
+            return <Pizza pizzaObj={pizza} />;
           })}
         </ul>
       ) : (
@@ -96,15 +89,14 @@ const Menu = () => {
   );
 };
 
-const Pizza = (props) => {
-  console.log(props);
+const Pizza = ({ pizzaObj }) => {
   return (
     <div className="pizza">
-      <img src={props.photoName} alt="Pizza spinchi" />
+      <img src={pizzaObj.photoName} alt="Pizza spinchi" />
       <div>
-        <h3>{props.name}</h3>
-        <p>{props.ingredients}</p>
-        <span>{props.price}</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.price}</span>
       </div>
     </div>
   );
@@ -118,7 +110,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       {isOpen ? (
-        <Order closeHour={closeHour} />
+        <Order closeHour={closeHour} openHour={openHour} />
       ) : (
         <p>
           We are happy to welcome you here between {openHour}:00 and {closeHour}
@@ -137,11 +129,12 @@ root.render(
   </React.StrictMode>
 );
 
-function Order(props) {
+function Order({ closeHour, openHour }) {
   return (
     <div className="order">
       <p>
-        We are open until {props.closeHour}:00. Come visit us or order online!
+        We are open from {openHour}:00 to {closeHour}:00. Come visit us or order
+        online!
       </p>
       <button className="btn">Order</button>
     </div>
