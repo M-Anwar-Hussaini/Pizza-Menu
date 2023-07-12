@@ -118,12 +118,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       {isOpen ? (
-        <div className="order">
-          <p>
-            We are open until {closeHour}:00. Come visit us or order online!
-          </p>
-          <button className="btn">Order</button>
-        </div>
+        <Order closeHour={closeHour} />
       ) : (
         <p>
           We are happy to welcome you here between {openHour}:00 and {closeHour}
@@ -141,3 +136,14 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+function Order(props) {
+  return (
+    <div className="order">
+      <p>
+        We are open until {props.closeHour}:00. Come visit us or order online!
+      </p>
+      <button className="btn">Order</button>
+    </div>
+  );
+}
