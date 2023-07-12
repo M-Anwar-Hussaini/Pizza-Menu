@@ -98,13 +98,14 @@ const Menu = () => {
 };
 
 const Pizza = ({ pizzaObj }) => {
+  const soldOut = pizzaObj.soldOut;
   return (
-    <div className="pizza">
+    <div className={`pizza ${soldOut ? 'sold-out' : ''}`}>
       <img src={pizzaObj.photoName} alt="Pizza spinchi" />
       <div>
         <h3>{pizzaObj.name}</h3>
         <p>{pizzaObj.ingredients}</p>
-        <span>{pizzaObj.price}</span>
+        <span>{soldOut ? 'Sold out' : pizzaObj.price}</span>
       </div>
     </div>
   );
