@@ -76,7 +76,7 @@ const Menu = () => {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      {len > 0 && (
+      {len > 0 ? (
         <ul className="pizzas">
           {pizzaData.map((pizza) => {
             return (
@@ -89,6 +89,8 @@ const Menu = () => {
             );
           })}
         </ul>
+      ) : (
+        <p>We are still working on our menu. Please come back later :)</p>
       )}
     </main>
   );
@@ -109,25 +111,24 @@ const Pizza = (props) => {
 };
 const Footer = () => {
   const hour = new Date().getHours();
-  const openHour = 4;
+  const openHour = 8;
   const closeHour = 15;
   const isOpen = hour >= openHour && hour <= closeHour;
-  console.log(isOpen);
-  // if (hour >= openHour && hour <= closeHour) {
-  //   alert('We are currently open!!');
-  // } else {
-  //   alert("Sorry! we're closed!!");
-  // }
 
   return (
     <footer className="footer">
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
           <p>
             We are open until {closeHour}:00. Come visit us or order online!
           </p>
           <button className="btn">Order</button>
         </div>
+      ) : (
+        <p>
+          We are happy to welcome you here between {openHour}:00 and {closeHour}
+          :00
+        </p>
       )}
     </footer>
   );
